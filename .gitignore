@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+.venv/
+venv/
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Data, caches and fold-level run files
+mne_data/
+dev_epochs/
+cache/
+runs/
+*.npz
+*.pkl
+*.edf
+*.gdf
+
+# Logs
+*.log

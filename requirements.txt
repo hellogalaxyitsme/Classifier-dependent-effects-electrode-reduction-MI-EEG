@@ -1,0 +1,7 @@
+moabb==1.7.2
+mne==1.13.2
+pyriemann==0.12
+scikit-learn==1.9.1
+numpy==2.5.4
+scipy==1.18.1
+pandas==3.0.6
