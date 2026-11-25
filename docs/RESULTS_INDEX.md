@@ -9,7 +9,7 @@ otherwise.
 - `confirmatory_tests.csv`: hypotheses H1-H6, frozen code on the stored data.
 - `confirmatory_tests_rescaled.csv`: the same analysis on unit-normalised
   covariances.
-- `oos_tests.csv`, `oos_pooled.csv`: addendum hypotheses O1-O6 per dataset and
+- `oos_tests.csv`, `oos_pooled.csv`: additional-dataset hypotheses O1-O6 per dataset and
   DerSimonian-Laird pooled estimates.
 
 ## Contrasts and pooling
@@ -49,6 +49,29 @@ otherwise.
 - `simulation_propositions.csv`: simulated and predicted accuracies for every
   replicate and condition.
 
+## Controls and runtime
+
+Written by `code/scripts/run_controls.py` and `code/scripts/analyze_controls.py`.
+Intervals in these files are two-sided 95 % t intervals unless the column
+name says otherwise.
+
+- `random_m22_summary.csv`, `random_m22_subjects.csv`, `random_m22_raw.csv.gz`:
+  M22 against random subsets of the same size on identical folds.
+- `random_nested_summary.csv`, `random_nested_subjects.csv`,
+  `random_nested_raw.csv.gz`: PREC with the nested count against random subsets
+  of the count chosen in the same outer fold.
+- `fixed_count_random.csv`: PREC (or the loading ranking LO) and GEO against
+  random subsets of the same fixed size (confirmatory k = 16; development
+  k-grid).
+- `shared_subset_interactions.csv`: MDM-minus-TS-LR interaction when both
+  decoders receive the same PREC subset (50 % of the montage, or 16 electrodes).
+- `m22_tslr_participants.csv`, `m22_tslr_distribution.csv`: per-participant
+  TS-LR change with M22, with proportions and quartiles.
+- `bandlimited_summary.csv`, `bandlimited_sigma.csv`, `bandlimited_raw.csv.gz`:
+  band-limited stationary Gaussian channels appended to M22.
+- `timing_summary.csv`, `timing_raw.csv`: single-threaded training and
+  inference time, and size of the tangent-space feature matrix.
+
 ## Numerical checks
 
 - `floor_check.csv`: floors and T1 subsets under participant-level and
@@ -74,9 +97,10 @@ unit-normalised confirmatory run.
 
 | Article item | Result files |
 |---|---|
-| Table 1 | `participant_level/` (selector `FULL`) |
+| Table 2 | `participant_level/` (selector `FULL`) |
+| Table 3 | `contrasts_per_dataset.csv`, `contrasts_pooled.csv` |
 | Figure 1 | `followup_fluctuation_channels.csv`; selection frequencies from the `CONF_normalised` selection files |
-| Figure 2, Table S8 | `contrasts_per_dataset.csv`, `contrasts_pooled.csv` |
+| Figure 2 | `contrasts_per_dataset.csv`, `contrasts_pooled.csv`, `oos_tests.csv` |
 | Figure 3 | `subset_agreement.csv`, `followup_fluctuation_channels.csv`, `followup_experiments.csv` (`BADCH`) |
 | Figure 4 | `simulation_propositions.csv`, `followup_augmentation_size.csv`, `augmentation_correlated.csv` |
 | Figure 5 | `followup_experiments.csv` (`KSEL`), `followup_stability.csv`, `cross_session_nested.csv` |
@@ -87,9 +111,15 @@ unit-normalised confirmatory run.
 | Table S5 | `contrasts_pooled.csv` |
 | Table S6 | `followup_experiments.csv` (`BADCH`) |
 | Table S7 | `participant_level/CONF_normalised_*`, `followup_dist.csv` |
-| Tables S9, S10 | `followup_augmentation_size.csv`, `augmentation_correlated.csv` |
-| Table S11 | `cross_session_nested.csv`, `followup_experiments.csv` (`HSPLIT`) |
+| Table S8 | `contrasts_per_dataset.csv` |
+| Table S9 | `random_m22_summary.csv`, `random_nested_summary.csv` |
+| Tables S10, S11 | `followup_augmentation_size.csv`, `augmentation_correlated.csv` |
+| Table S12 | `bandlimited_summary.csv` |
+| Table S13 | `cross_session_nested.csv`, `followup_experiments.csv` (`HSPLIT`) |
+| Table S14 | `fixed_count_random.csv` |
+| Table S15 | `timing_summary.csv` |
+| Figure S1 | `m22_tslr_participants.csv`, `bandlimited_summary.csv`, `followup_augmentation_size.csv` |
 | Section S3 | `floor_check.csv`, `floor_check_csplda.csv` |
-| Section S6 | `followup_dist.csv`, `followup_gapshare.csv`, `followup_fluctuation_pooled.csv` |
+| Section S6 | `followup_dist.csv`, `followup_gapshare.csv`, `followup_fluctuation_pooled.csv`, `shared_subset_interactions.csv`, `m22_tslr_distribution.csv` |
 | Section S8 | `development/` |
 | Section S9 | `followup_experiments.csv`, `followup_stability.csv`, `cross_session_nested*.csv`, `spd_check.csv` |

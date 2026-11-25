@@ -14,6 +14,8 @@
 | `run_oos.py` | Addendum protocol on the additional datasets (frozen code) |
 | `run_transfer_mixing.py` | Cross-session transfer with a nested count, loaded re-centring, correlated augmentation |
 | `run_simulation.py` | Monte-Carlo check of Propositions 1-3 |
+| `run_controls.py` | Band-limited stationary control, size-matched random subsets for M22 and the nested count, runtime benchmark |
+| `analyze_controls.py` | Shared-subset interactions, fixed-count random controls, per-participant TS-LR change with M22 |
 | `analyze_conf.py` | Confirmatory hypotheses H1-H6 (frozen code) |
 | `analyze_conf_rescaled.py` | The frozen analysis applied to the unit-normalised run |
 | `analyze_oos.py` | Addendum hypotheses O1-O6 (frozen code) |

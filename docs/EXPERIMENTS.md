@@ -63,6 +63,19 @@ Covariances of each fold are divided by the mean training-set channel variance.
 | `XNESTL` | `XNEST` with the diagonal loading of MDM added before re-centring (sensitivity analysis including all participants) |
 | `GCOR` | 32 class-independent electrodes appended to M22 and mixed with the recorded electrodes by a fixed matrix (independent, spread and leak conditions) |
 
+## Controls and runtime (`run_controls.py`, `analyze_controls.py`)
+
+| Part | Content |
+|---|---|
+| `bandlimited` | 32 stationary white-Gaussian channels, filtered at 8-30 Hz like the recordings, appended to M22 of the development datasets as diagonal variances or as the full 32 x 32 sample covariance; split seeds 42-44 |
+| `random_m22` | M22 against random subsets of the same size on identical folds (10 draws per fold for MDM, 5 for TS-LR) on the seven test datasets with M22 |
+| `random_nested` | PREC with the nested count against random subsets of the count chosen in the same outer fold, on the eleven datasets with more than 22 electrodes |
+| `timing` | Single-threaded training and inference time of MDM and TS-LR, full montage against M22, from precomputed covariances (fold 0 of ten participants of Cho 2017 and HGD; one warm-up run, median of five repetitions) |
+
+`analyze_controls.py` reads existing runs only: shared-subset interactions
+(`KSEL`, `OOS`, `rescaled/CONF`), fixed-count random controls (`rescaled/CONF`,
+`B`) and per-participant TS-LR changes with M22.
+
 ## Simulation (`run_simulation.py`)
 
 Monte-Carlo check of Propositions 1-3: four informative electrodes, 0 to 32
